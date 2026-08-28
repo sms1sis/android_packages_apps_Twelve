@@ -18,9 +18,12 @@ android {
         applicationId = "org.lineageos.twelve"
         minSdk = 30
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        // Read versionCode from GitHub Actions, default to 1 if not found
+        versionCode = if (project.hasProperty("versionCode")) project.property("versionCode").toString().toInt() else 1
+        // Read versionName from GitHub Actions, default to "1.0" if not found
+        versionName = if (project.hasProperty("versionName")) project.property("versionName").toString() else "1.0"
     }
+
 
     buildTypes {
         release {
